@@ -76,6 +76,15 @@ if (typeof describe === 'function') {
       assert.equal(rockPaperScissors('Paper', 'SCISSORS'), "Hand two wins!");
       assert.equal(rockPaperScissors('rock ', 'sCiSsOrs'), "Hand one wins!");
     });
+    it('Null testing, check for null data', () => {
+      assert.equal(rockPaperScissors('',''), "Null Data Entered");
+      assert.equal(rockPaperScissors('','rock'), "Null Data Entered");
+      assert.equal(rockPaperScissors('rock',''), "Null Data Entered");
+      assert.equal(rockPaperScissors('','paper'), "Null Data Entered");
+      assert.equal(rockPaperScissors('paper',''), "Null Data Entered");
+      assert.equal(rockPaperScissors('','SCISSORS'), "Null Data Entered");
+      assert.equal(rockPaperScissors('SCISSORS',''), "Null Data Entered");
+    });
   });
 } else {
 
