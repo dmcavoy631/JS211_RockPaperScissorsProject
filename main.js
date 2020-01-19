@@ -19,6 +19,12 @@ const rockPaperScissors = (hand1, hand2) => {
   hand1 = hand1.trim().toLowerCase();
   hand2 = hand2.trim().toLowerCase();
 
+  // Null check
+  if (hand1 == false || hand1 === null){
+    console.log("Hand 1, You didnt play a hand");
+  }else if (hand2 == false || hand2 === null){
+    console.log("Hand 2, You didnt play a hand");
+  };
 
   //Pass results back
   let result;
@@ -58,8 +64,6 @@ function getPrompt() {
 // You use them run the command: npm test main.js
 // to close them ctrl + C
 if (typeof describe === 'function') {
-
-  // most are notes for human eyes to read, but essentially passes in inputs then compares if the function you built return the expected output.
   describe('#rockPaperScissors()', () => {
     it('should detect a tie', () => {
       assert.equal(rockPaperScissors('rock', 'rock'), "It's a tie!");
@@ -75,20 +79,12 @@ if (typeof describe === 'function') {
       assert.equal(rockPaperScissors('rOcK', ' paper '), "Hand two wins!");
       assert.equal(rockPaperScissors('Paper', 'SCISSORS'), "Hand two wins!");
       assert.equal(rockPaperScissors('rock ', 'sCiSsOrs'), "Hand one wins!");
+      assert.equal(rockPaperScissors('rock ', ' sCiSsOrs '), "Hand one wins!");
     });
-    it('Null testing, check for null data', () => {
-      assert.equal(rockPaperScissors('',''), "Null Data Entered");
-      assert.equal(rockPaperScissors('','rock'), "Null Data Entered");
-      assert.equal(rockPaperScissors('rock',''), "Null Data Entered");
-      assert.equal(rockPaperScissors('','paper'), "Null Data Entered");
-      assert.equal(rockPaperScissors('paper',''), "Null Data Entered");
-      assert.equal(rockPaperScissors('','SCISSORS'), "Null Data Entered");
-      assert.equal(rockPaperScissors('SCISSORS',''), "Null Data Entered");
+    it('Null/Undefined/false no entery', () => {
+      assert.equal(rockPaperScissors(keycode.names[13], 'paper'), "Hand 1, You didnt play a hand");
     });
   });
 } else {
-
-  // always returns ask the user for another input
   getPrompt();
-
 }
